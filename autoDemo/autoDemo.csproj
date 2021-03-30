@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <Configurations>Debug;Release;testEnv</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <COMReference Include="{bee4bfec-6683-3e67-9167-3c0cbc68f40a}">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>4</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>bee4bfec-6683-3e67-9167-3c0cbc68f40a</Guid>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Microsoft.VisualStudio.SlowCheetah" Version="3.2.26">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Selenium.Support" Version="3.141.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="89.0.4389.2300" />
+    <PackageReference Include="SpecFlow" Version="3.7.38" />
+    <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.7.10" />
+
+    
+
+    
+
+    
+    <PackageReference Include="SpecFlow.NUnit" Version="3.7.13" />
+    <PackageReference Include="nunit" Version="3.13.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
+    
+
+    
+
+    
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    
+
+    
+
+    
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.7.38" />
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Update="App.testEnv.config">
+      <IsTransformFile>true</IsTransformFile>
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+  </ItemGroup>
+<Target Name="CopyCustomContent" AfterTargets="AfterBuild">
+  <Copy SourceFiles="app.config" DestinationFiles="$(OutDir)\testhost.dll.config" />
+  <Copy SourceFiles="app.config" DestinationFiles="$(OutDir)\testhost.x86.dll.config" />
+    <Copy SourceFiles="app.testEnv.config" DestinationFiles="$(OutDir)\testhost.dll.config" />
+  <Copy SourceFiles="app.testEnv.config" DestinationFiles="$(OutDir)\testhost.x86.dll.config" />
+</Target>
+</Project>

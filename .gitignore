@@ -1,0 +1,11 @@
+**/TestResults 
+*.log
+*.feature.cs
+*.vs
+**/packages
+*/bin
+*/obj
+*.user
+*.TokenResponse-user
+**/FailureScreenshots
+!.gitkeep
