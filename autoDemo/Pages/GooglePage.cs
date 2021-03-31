@@ -37,7 +37,7 @@ namespace autoDemo.Pages
 
         public bool VerifyNoSearchResultMessage(string term)
         {
-            return _browser.GetElement("//p[@role='heading']").Text.Equals("Your search - " + term + " - did not match any documents.z");
+            return _browser.GetElement("//p[@role='heading']").Text.Equals("Your search - " + term + " - did not match any documents.");
         }
     }
 }
